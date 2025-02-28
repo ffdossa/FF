@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 enum Colors {
-    static let basicColor = Color.init(hexString: "#16202A")
-    static let whiteColor = Color.init(hexString: "#FFFFFF")
-    static let blueColor = Color.init(hexString: "#1D9BF0")
+   static let whiteColor = Color.init(hexString: "#F4EFE9")
+   static let primaryColor = Color.init(hexString: "#162C2A")
+   static let grayColor = Color.init(hexString: "#8B99A6")
+   static let secondaryColor = Color.init(hexString: "#1DDBF0")
+   static let secondaryDarkColor = Color.init(hexString: "#0D776C")
 }
