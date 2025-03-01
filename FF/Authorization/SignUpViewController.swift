@@ -37,6 +37,8 @@ struct SignUpView: View {
 
          Spacer()
 
+         // HERE PLASE FOR LOGIN GOOGLE, APPLE MAIL
+
          // Input Fields
          VStack(spacing: 8) {
             LoginTextField(text: $viewModel.login)
@@ -55,12 +57,14 @@ struct SignUpView: View {
          Spacer()
 
          // Sign-Up Button
-         MainButton(title: "Create account",
-                    titleColor: Colors.primaryColor,
-                    backgroundColor: Colors.whiteColor) {
+         Button {
             viewModel.createUser()
+         } label: {
+            MainButtonFrame(title: "Create account",
+                            titleColor: Colors.primaryColor,
+                            backgroundColor: Colors.whiteColor)
          }
-                    .disabled(!viewModel.isAuthFormValidate)
+         .disabled(!viewModel.isAuthFormValidate)
       }
       .padding(12)
 
@@ -71,7 +75,7 @@ struct SignUpView: View {
             Button {
                presentationMode.wrappedValue.dismiss()
             } label: {
-               ToolBarFrame(image: "close")
+               ToolbarButtonFrame(image: "close")
             }
          }
       }

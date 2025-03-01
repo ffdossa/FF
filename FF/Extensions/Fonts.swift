@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Fonts {
    static var primaryFont: Font {
-      return Font.subheadline
+      return Font.callout
    }
 
    static var boldPrimaryFont: Font {
@@ -18,15 +18,14 @@ enum Fonts {
    }
 
    static var lightFont: Font {
-      return Font.caption
-   }
-
-   static var buttonFont: Font {
-      return Font.callout
+      return Font.footnote
    }
 
    static var titleFont: Font {
       return Font.largeTitle
    }
+
+//   static var MonoExtraBold =
+
 
 }

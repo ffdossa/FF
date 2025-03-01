@@ -55,12 +55,14 @@ struct LogInView: View {
          Spacer()
 
          // Sign-Up Button
-         MainButton(title: "Start",
-                    titleColor: Colors.primaryColor,
-                    backgroundColor: Colors.whiteColor) {
+         Button {
             viewModel.signIn()
+         } label: {
+            MainButtonFrame(title: "Start",
+                            titleColor: Colors.primaryColor,
+                            backgroundColor: Colors.whiteColor)
          }
-                    .disabled(!viewModel.isAuthFormValidate)
+         .disabled(!viewModel.isAuthFormValidate)
       }
       .padding(12)
 
@@ -71,7 +73,7 @@ struct LogInView: View {
             Button {
                presentationMode.wrappedValue.dismiss()
             } label: {
-               ToolBarFrame(image: "close")
+               ToolbarButtonFrame(image: "close")
             }
          }
       }

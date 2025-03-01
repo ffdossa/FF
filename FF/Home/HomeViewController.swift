@@ -27,34 +27,35 @@ struct HomeView: View {
    @StateObject var viewModel = HomeViewModel(userId: "")
 
    var body: some View {
-      ZStack(alignment: .bottomTrailing) {
-         PostScrollView()
-
-         Button {
-            viewModel.showingNewItemView = true
-         } label: {
-            ImageButtonFrame(image: "add")
-         }
-      }
-
-      .padding(12)
-
-      .background(Colors.primaryColor)
-
-      .toolbar {
-         ToolbarItem(placement: .topBarLeading) {
-            NavigationLink {
-               ProfileLeftSideView()
+      NavigationStack {
+         ZStack(alignment: .bottomTrailing) {
+            PostScrollView()
+            
+            Button {
+               viewModel.showingNewItemView = true
             } label: {
-               ToolBarFrame(image: "profile")
+               ButtonImageFrame(image: "add")
             }
          }
-
-         ToolbarItem(placement: .topBarTrailing) {
-            Button {
-               // ACTION LOGOUT
-            } label: {
-               ToolBarFrame(image: "logout")
+         .padding(12)
+         
+         .background(Colors.primaryColor)
+         
+         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+               NavigationLink {
+                  ProfileView()
+               } label: {
+                  ToolbarButtonFrame(image: "profile")
+               }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+               Button {
+                  // ACTION LOGOUT
+               } label: {
+                  ToolbarButtonFrame(image: "logout")
+               }
             }
          }
       }
@@ -62,19 +63,36 @@ struct HomeView: View {
       .sheet(isPresented: $viewModel.showingNewItemView) {
          NewItemView(newItemPresented: $viewModel.showingNewItemView)
       }
+
+      .overlay(
+         ZStack {
+            if viewModel.showImageViewer {
+               Colors.primaryColor
+                  .opacity(viewModel.bgOpacity)
+                  .ignoresSafeArea()
+
+               ImageView()
+                  .toolbar(.hidden, for: .tabBar)
+            }
+         }
+      )
+         
+      .environmentObject(viewModel)
    }
 }
 
 // MARK: SubView
 
 struct PostScrollView: View {
+   @StateObject var viewModel = HomeViewModel(userId: "")
+
    var body: some View {
       ScrollView(.vertical) {
          HStack(alignment: .top, spacing: 8) {
             NavigationLink {
                ProfileView()
             } label: {
-               ImageButtonFrame(image: "profile")
+               ButtonImageFrame(image: "profile")
             }
 
             VStack(alignment: .leading, spacing: 4) {
@@ -82,7 +100,7 @@ struct PostScrollView: View {
                   NavigationLink {
                      // action post view
                   } label: {
-                     TextFrameView(titleText: "Andrii M.", subText: "@ffdossa")
+                     TitleSubtitleTextFrame(titleText: "Andrii M.", subText: "@ffdossa")
                   }
 
                   Spacer()
@@ -100,35 +118,39 @@ struct PostScrollView: View {
                NavigationLink {
                   // action post view
                } label: {
-                  TextPrimaryFrame(text: "BREAKING: Romanian prosecutors found 10 million $ in cash burried in an underground safe at the house of Calin Georgescu's bodyguard.")
+                  PrimaryText(text: "Some more text here. Some more text here. Some more text here. Some more text here. Some more text here. Some more text here.")
+
                }
 
-               // some preview photo or video and push view
-
+               ChipsView {
+                  ForEach(viewModel.allImages.indices, id: \.self) { index in
+                     GridImageView(index: index)
+                  }
+               }
 
                HStack(spacing: 12) {
                   NavigationLink {
                      // actions
                   } label: {
-                     TextImageFrame(image: "chat", text: "11k")
+                     PostButtonTextImageFrame(image: "chat", text: "11k")
                   }
 
                   NavigationLink {
                      // actions
                   } label: {
-                     TextImageFrame(image: "repost", text: "22k")
+                     PostButtonTextImageFrame(image: "repost", text: "22k")
                   }
 
                   Button {
                      // actions
                   } label: {
-                     TextImageFrame(image: "heart", text: "33k")
+                     PostButtonTextImageFrame(image: "heart", text: "33k")
                   }
 
                   NavigationLink {
                      // actions
                   } label: {
-                     TextImageFrame(image: "chart", text: "44k")
+                     PostButtonTextImageFrame(image: "chart", text: "44k")
                   }
 
                   Spacer()
@@ -136,89 +158,16 @@ struct PostScrollView: View {
                   Button {
                      // action
                   } label: {
-                     LightImageFrame(image: "bookmark")
+                     PostButtonImage(image: "bookmark")
                   }
 
                   ShareLink(item: URL(string: "https://github.com/ffdossa")!) {
-                     LightImageFrame(image: "share")
+                     PostButtonImage(image: "share")
                   }
                }
             }
          }
       }
-   }
-}
-
-struct TextPrimaryFrame: View {
-   var text: String
-
-   var body: some View {
-      Text(text)
-         .multilineTextAlignment(.leading)
-         .font(Fonts.primaryFont)
-         .foregroundStyle(Colors.whiteColor)
-   }
-}
-
-struct TextFrameView: View {
-   var titleText: String
-   var subText: String
-
-   var body: some View {
-      Text(titleText)
-         .font(Fonts.primaryFont)
-         .bold()
-         .foregroundStyle(Colors.whiteColor)
-
-      Text(subText)
-         .font(Fonts.primaryFont)
-         .foregroundStyle(Colors.grayColor)
-   }
-}
-
-struct ImageButtonFrame: View {
-   var image: String
-
-   var body: some View {
-      ZStack {
-         RoundedRectangle(cornerRadius: 16)
-            .fill(Colors.whiteColor)
-            .frame(width: 48, height: 48)
-         Image(image)
-            .resizable()
-            .frame(width: 32, height: 32)
-            .tint(Colors.primaryColor)
-      }
-   }
-}
-
-struct TextImageFrame: View {
-   var image: String
-   var text: String
-
-   var body: some View {
-      HStack {
-         Image(image)
-            .resizable()
-            .frame(width: 16, height: 16)
-            .tint(Colors.grayColor)
-
-         Text(text)
-            .font(Fonts.lightFont)
-            .foregroundStyle(Colors.grayColor)
-            .padding(.leading, -4)
-      }
-   }
-}
-
-struct LightImageFrame: View {
-   var image: String
-
-   var body: some View {
-      Image(image)
-         .resizable()
-         .frame(width: 16, height: 16)
-         .tint(Colors.grayColor)
    }
 }
 

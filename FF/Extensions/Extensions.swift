@@ -67,6 +67,12 @@ extension Color {
 }
 
 extension View {
+    func customFont(_ name: String, size: CGFloat) -> some View {
+        self.font(.custom(name, size: size))
+    }
+}
+
+extension View {
     func setupHostingController(_ parent: UIViewController) {
         let hostingController = UIHostingController(rootView: self)
         parent.addChild(hostingController)

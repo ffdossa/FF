@@ -36,7 +36,7 @@ struct NewItemView: View {
             Button {
                // PUSH PROFILE
             } label: {
-               ImageButtonFrame(image: "profile")
+               ToolbarButtonFrame(image: "profile")
             }
 
             TextField("What's happening?", text: $viewModel.title, axis: .vertical)
@@ -45,6 +45,7 @@ struct NewItemView: View {
                .foregroundStyle(Colors.whiteColor)
                .lineLimit(8)
          }
+         
          Spacer()
 
          Button {
@@ -55,7 +56,7 @@ struct NewItemView: View {
                viewModel.showAlert = true
             }
          } label: {
-            ImageButtonFrame(image: "arrow-up")
+            ButtonImageFrame(image: "arrow-up")
          }
       }
       .padding(12)
