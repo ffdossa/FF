@@ -13,4 +13,12 @@ enum Colors {
    static let grayColor = Color.init(hexString: "#8B99A6")
    static let primaryColor = Color.init(hexString: "#162C2A")
    static let secondaryColor = Color.init(hexString: "#0D676C")
+
+   static func random() -> Color {
+       return Color(
+           red: .random(in: 0...1),
+           green: .random(in: 0...1),
+           blue: .random(in: 0...1)
+       )
+   }
 }

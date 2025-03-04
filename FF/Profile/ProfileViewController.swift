@@ -27,20 +27,9 @@ struct ProfileView: View {
 
    var body: some View {
       NavigationStack {
-         VStack(alignment: .leading, spacing: 18) {
-            //            ZStack(alignment: .bottomLeading) {
-            //               ZStack {
-            //                  RoundedRectangle(cornerRadius: 24)
-            //                     .fill(Colors.whiteColor)
-            //                     .frame(width: 72, height: 72)
-            //
-            //                  Image("profile")
-            //                     .resizable()
-            //                     .frame(width: 48, height: 48)
-            //               }
-            //               .padding(.leading, 12)
-            //            }
 
+         VStack(alignment: .leading, spacing: 64) {
+            ProfileHeaderView()
             VStack(alignment: .leading, spacing: 12) {
                VStack(alignment: .leading) {
                   Text("FFDOSSA")
@@ -49,11 +38,11 @@ struct ProfileView: View {
                      .bold()
 
                   Text("@ffdossa")
-                     .font(Fonts.primaryFont)
+                     .font(Fonts.basicRegularFont)
                      .foregroundStyle(Colors.grayColor)
                }
 
-               PrimaryText(text: "Some more text here. Some more text here. Some more text here. Some more text here. Some more text here. Some more text here.")
+               PrimaryText(text: "Some more text here.")
 
                ChipsView {
                   PostButtonTextImageFrame(image: "work",
@@ -94,13 +83,12 @@ struct ProfileView: View {
                   Button {
                      viewModel.showingNewItemView = true
                   } label: {
-                     ButtonImageFrame(image: "add")
+                     PushButtonFrame(image: "add")
                   }
                }
             }
+            .padding(10)
          }
-         .padding(12)
-
          .background(Colors.primaryColor)
 
          .toolbar {
@@ -114,7 +102,7 @@ struct ProfileView: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                Button {
-                  presentationMode.wrappedValue.dismiss()
+                  // search button
                } label: {
                   ToolbarButtonFrame(image: "search")
                }
@@ -122,9 +110,9 @@ struct ProfileView: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                Button {
-                  presentationMode.wrappedValue.dismiss()
+                  // share account
                } label: {
-                  ToolbarButtonFrame(image: "logout")
+                  ToolbarButtonFrame(image: "share")
                }
             }
          }
@@ -142,13 +130,35 @@ struct ProfileView: View {
                   .ignoresSafeArea()
 
                ImageView()
-                  .toolbar(.hidden, for: .tabBar)
             }
          }
       )
       .environmentObject(viewModel)
 
       .navigationBarBackButtonHidden(true)
+   }
+}
+
+struct ProfileHeaderView: View {
+   var body: some View {
+      VStack {
+         ZStack(alignment: .bottomLeading) {
+            Colors.secondaryColor
+               .ignoresSafeArea()
+            ZStack {
+               RoundedRectangle(cornerRadius: 20)
+                  .fill(Colors.random())
+                  .frame(width: 60, height: 60)
+                  .overlay(RoundedRectangle(cornerRadius: 24).stroke(Colors.primaryColor, lineWidth: 4))
+
+               Text("A")
+                  .font(Fonts.subtitleFont)
+                  .foregroundStyle(Colors.whiteColor)
+            }
+            .offset(x: 10, y: 40)
+         }
+      }
+      .frame(height: 12)
    }
 }
 
@@ -159,12 +169,11 @@ struct FollowButtonFrame: View {
    var body: some View {
       HStack {
          Text(countText)
-            .font(Fonts.lightFont)
-            .bold()
+            .font(Fonts.secondMediumFont)
             .foregroundStyle(Colors.whiteColor)
 
          Text(text)
-            .font(Fonts.lightFont)
+            .font(Fonts.secondRegularFont)
             .foregroundStyle(Colors.grayColor)
             .padding(.leading, -4)
       }

@@ -34,11 +34,11 @@ struct HomeView: View {
             Button {
                viewModel.showingNewItemView = true
             } label: {
-               ButtonImageFrame(image: "add")
+               PushButtonFrame(image: "add")
             }
          }
-         .padding(12)
-         
+         .padding(10)
+
          .background(Colors.primaryColor)
          
          .toolbar {
@@ -46,7 +46,7 @@ struct HomeView: View {
                NavigationLink {
                   ProfileView()
                } label: {
-                  ToolbarButtonFrame(image: "profile")
+                  ProfileToolbarButtonFrame(text: "F")
                }
             }
             
@@ -72,7 +72,6 @@ struct HomeView: View {
                   .ignoresSafeArea()
 
                ImageView()
-                  .toolbar(.hidden, for: .tabBar)
             }
          }
       )
@@ -92,7 +91,7 @@ struct PostScrollView: View {
             NavigationLink {
                ProfileView()
             } label: {
-               ButtonImageFrame(image: "profile")
+               ProfileImageFrame(text: "A")
             }
 
             VStack(alignment: .leading, spacing: 4) {

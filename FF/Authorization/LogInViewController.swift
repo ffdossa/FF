@@ -48,7 +48,7 @@ struct LogInView: View {
          if let error = viewModel.error {
             Text(error)
                .foregroundStyle(Colors.whiteColor)
-               .font(Fonts.primaryFont)
+               .font(Fonts.basicRegularFont)
                .padding(.vertical, 8)
          }
 

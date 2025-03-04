@@ -67,5 +67,7 @@ struct ImageView: View {
             .onEnded(viewModel.onEnd(value:))
       )
       .transition(.move(edge: .bottom))
+      .toolbar(.hidden, for: .tabBar)
+      .toolbar(.hidden, for: .navigationBar)
    }
 }

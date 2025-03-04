@@ -36,8 +36,7 @@ struct GridImageView: View {
 
                let remainingImages = viewModel.allImages.count - 4
                Text("+\(remainingImages)")
-                  .font(.title)
-                  .bold()
+                  .font(Fonts.titleFont)
                   .foregroundColor(Colors.whiteColor)
             }
          }
@@ -46,7 +45,7 @@ struct GridImageView: View {
 
    // Expand image size when space is availble
    func getWidth(index: Int) -> CGFloat {
-      let width = rect.width - 88
+      let width = rect.width - 78
       if viewModel.allImages.count % 2 == 0 {
          return width / 2
       } else {

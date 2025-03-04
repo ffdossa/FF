@@ -52,16 +52,15 @@ struct SideBarView: View {
 
    var body: some View {
       VStack(alignment: .leading, spacing: 12) {
-         ButtonImageFrame(image: "profile")
+         ProfileImageFrame(text: "A")
 
          VStack(alignment: .leading, spacing: 4) {
             Text("Andrii M.")
-               .font(Fonts.boldPrimaryFont)
-               .bold()
+               .font(Fonts.secondBoldFont)
                .foregroundStyle(Colors.whiteColor)
 
             Text("@ffdossa")
-               .font(Fonts.primaryFont)
+               .font(Fonts.basicRegularFont)
                .foregroundStyle(Colors.grayColor)
          }
 
@@ -92,7 +91,7 @@ struct SideBarView: View {
             }
          }
       }
-      .padding()
+      .padding(28)
 
       .background(Colors.primaryColor)
       .scrollIndicators(.hidden)
@@ -101,14 +100,13 @@ struct SideBarView: View {
    @ViewBuilder
    func SideBarActionButton(value: SideBarAction, action: @escaping () -> ()) -> some View {
       Button(action: action) {
-         HStack(spacing: 16) {
+         HStack(spacing: 24) {
             Image(value.image)
                .resizable()
                .frame(width: 28, height: 28)
 
             Text(value.rawValue)
-               .font(.title2)
-               .bold()
+               .font(Fonts.subtitleFont)
          }
          .foregroundStyle(Colors.whiteColor)
       }

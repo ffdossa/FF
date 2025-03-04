@@ -30,7 +30,7 @@ struct MainView: View {
    var body: some View {
       GeometryReader { proxy in
          let size = proxy.size
-         let sideBarWidth = size.width * (2 / 3)
+         let sideBarWidth = size.width * (2.4 / 3)
 
          ZStack(alignment: .leading) {
             SideBarView()
@@ -62,7 +62,7 @@ struct MainView: View {
             }
             .overlay {
                Rectangle()
-                  .fill(Colors.grayColor.opacity(0.8))
+                  .fill(Color.black.opacity(0.8))
                   .ignoresSafeArea()
                   .opacity(progress)
             }

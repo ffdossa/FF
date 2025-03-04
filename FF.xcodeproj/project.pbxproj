@@ -31,14 +31,6 @@
 		AB7499D42D70653E003850EE /* NewItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7499D32D70653E003850EE /* NewItemViewModel.swift */; };
 		AB7499D62D706563003850EE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7499D52D706563003850EE /* HomeViewModel.swift */; };
 		AB7499D82D7065BC003850EE /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7499D72D7065BC003850EE /* ItemModel.swift */; };
-		AB8124462D7396B700B45739 /* JetBrainsMono-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB8124402D7396B700B45739 /* JetBrainsMono-ExtraLight.ttf */; };
-		AB8124472D7396B700B45739 /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB8124422D7396B700B45739 /* JetBrainsMono-Medium.ttf */; };
-		AB8124482D7396B700B45739 /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB8124412D7396B700B45739 /* JetBrainsMono-Light.ttf */; };
-		AB8124492D7396B700B45739 /* JetBrainsMono-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB8124452D7396B700B45739 /* JetBrainsMono-Thin.ttf */; };
-		AB81244A2D7396B700B45739 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB81243E2D7396B700B45739 /* JetBrainsMono-Bold.ttf */; };
-		AB81244B2D7396B700B45739 /* JetBrainsMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB8124442D7396B700B45739 /* JetBrainsMono-SemiBold.ttf */; };
-		AB81244C2D7396B700B45739 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB8124432D7396B700B45739 /* JetBrainsMono-Regular.ttf */; };
-		AB81244D2D7396B700B45739 /* JetBrainsMono-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB81243F2D7396B700B45739 /* JetBrainsMono-ExtraBold.ttf */; };
 		AB8AF60F2D6BACEB005EADBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8AF60E2D6BACEB005EADBB /* GoogleService-Info.plist */; };
 		AB8AF6132D6F289C005EADBB /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AF6122D6F289C005EADBB /* TabBarViewController.swift */; };
 		AB8AF6192D6F2BF3005EADBB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AF6182D6F2BF3005EADBB /* HomeViewController.swift */; };
@@ -91,14 +83,6 @@
 		AB7499D32D70653E003850EE /* NewItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewModel.swift; sourceTree = "<group>"; };
 		AB7499D52D706563003850EE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AB7499D72D7065BC003850EE /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
-		AB81243E2D7396B700B45739 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
-		AB81243F2D7396B700B45739 /* JetBrainsMono-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold.ttf"; sourceTree = "<group>"; };
-		AB8124402D7396B700B45739 /* JetBrainsMono-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraLight.ttf"; sourceTree = "<group>"; };
-		AB8124412D7396B700B45739 /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
-		AB8124422D7396B700B45739 /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
-		AB8124432D7396B700B45739 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
-		AB8124442D7396B700B45739 /* JetBrainsMono-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-SemiBold.ttf"; sourceTree = "<group>"; };
-		AB8124452D7396B700B45739 /* JetBrainsMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Thin.ttf"; sourceTree = "<group>"; };
 		AB8AF60E2D6BACEB005EADBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB8AF6122D6F289C005EADBB /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AB8AF6182D6F2BF3005EADBB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -144,16 +128,16 @@
 			children = (
 				AB7499BD2D6FB10F003850EE /* ProfileViewController.swift */,
 				AB33DDA02D71D49300B7D6FC /* SideBarViewController.swift */,
-				AB33DDA32D71D57E00B7D6FC /* ProvileViewModel */,
+				AB33DDA32D71D57E00B7D6FC /* ProfileViewModel */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		AB33DDA32D71D57E00B7D6FC /* ProvileViewModel */ = {
+		AB33DDA32D71D57E00B7D6FC /* ProfileViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ProvileViewModel;
+			path = ProfileViewModel;
 			sourceTree = "<group>";
 		};
 		AB410CFE2D6B36AE00E6C6CE /* Networking */ = {
@@ -275,21 +259,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		AB81242D2D738D7700B45739 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				AB81243E2D7396B700B45739 /* JetBrainsMono-Bold.ttf */,
-				AB81243F2D7396B700B45739 /* JetBrainsMono-ExtraBold.ttf */,
-				AB8124402D7396B700B45739 /* JetBrainsMono-ExtraLight.ttf */,
-				AB8124412D7396B700B45739 /* JetBrainsMono-Light.ttf */,
-				AB8124422D7396B700B45739 /* JetBrainsMono-Medium.ttf */,
-				AB8124432D7396B700B45739 /* JetBrainsMono-Regular.ttf */,
-				AB8124442D7396B700B45739 /* JetBrainsMono-SemiBold.ttf */,
-				AB8124452D7396B700B45739 /* JetBrainsMono-Thin.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		ABA73A042D6B6CE5003C23BE /* OtherViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,7 +329,6 @@
 		ABD53CAA2D69FD4700EDA1E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AB81242D2D738D7700B45739 /* Fonts */,
 				ABD53C9A2D69E90000EDA1E5 /* LaunchScreen.storyboard */,
 				AB352C0D2D6F408B00C94D8C /* Assets.xcassets */,
 			);
@@ -452,14 +420,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB8124462D7396B700B45739 /* JetBrainsMono-ExtraLight.ttf in Resources */,
-				AB8124472D7396B700B45739 /* JetBrainsMono-Medium.ttf in Resources */,
-				AB8124482D7396B700B45739 /* JetBrainsMono-Light.ttf in Resources */,
-				AB8124492D7396B700B45739 /* JetBrainsMono-Thin.ttf in Resources */,
-				AB81244A2D7396B700B45739 /* JetBrainsMono-Bold.ttf in Resources */,
-				AB81244B2D7396B700B45739 /* JetBrainsMono-SemiBold.ttf in Resources */,
-				AB81244C2D7396B700B45739 /* JetBrainsMono-Regular.ttf in Resources */,
-				AB81244D2D7396B700B45739 /* JetBrainsMono-ExtraBold.ttf in Resources */,
 				ABD53C9C2D69E90000EDA1E5 /* LaunchScreen.storyboard in Resources */,
 				AB352C0E2D6F408B00C94D8C /* Assets.xcassets in Resources */,
 				AB8AF60F2D6BACEB005EADBB /* GoogleService-Info.plist in Resources */,
