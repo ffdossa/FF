@@ -59,14 +59,14 @@ struct LogInView: View {
             viewModel.signIn()
          } label: {
             MainButtonFrame(title: "Start",
-                            titleColor: Colors.primaryColor,
+                            titleColor: Colors.darkBlackColor,
                             backgroundColor: Colors.whiteColor)
          }
          .disabled(!viewModel.isAuthFormValidate)
       }
-      .padding(12)
+      .padding()
 
-      .background(Colors.primaryColor)
+      .background(Colors.darkBlackColor)
 
       .toolbar {
          ToolbarItem(placement: .topBarLeading) {
@@ -83,6 +83,6 @@ struct LogInView: View {
 
 #Preview {
    LogInView()
-      .background(Colors.primaryColor)
+      .background(Colors.darkBlackColor)
 }
 

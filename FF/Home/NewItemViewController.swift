@@ -61,7 +61,7 @@ struct NewItemView: View {
       }
       .padding(12)
 
-      .background(Colors.primaryColor)
+      .background(Colors.darkBlackColor)
 
       .alert(isPresented: $viewModel.showAlert) {
          Alert(title: Text("Sorry"),

@@ -11,17 +11,16 @@ struct LoginTextField: View {
    let text: Binding<String>
 
    var body: some View {
-      TextField("", text: text, prompt: Text("Phone, email, or username").foregroundColor(Colors.grayColor))
+      TextField("", text: text, prompt: Text("Phone, email, or username").foregroundColor(Colors.lighterGrayWhite))
          .multilineTextAlignment(.center)
          .foregroundStyle(Colors.whiteColor)
          .tint(Colors.whiteColor)
          .font(Fonts.basicRegularFont)
          .padding()
          .background {
-            RoundedRectangle(cornerRadius: 16)
-               .fill(Colors.secondaryColor)
-               .opacity(0.1)
-               .frame(height: 48)
+            RoundedRectangle(cornerRadius: 18)
+               .fill(Colors.whiteColor.opacity(0.1))
+               .frame(height: 45)
          }
    }
 }
@@ -30,17 +29,16 @@ struct PasswordSecureField: View {
    let text: Binding<String>
 
    var body: some View {
-      SecureField("", text: text, prompt: Text("Password").foregroundColor(Colors.grayColor))
+      SecureField("", text: text, prompt: Text("Password").foregroundColor(Colors.lighterGrayWhite))
          .multilineTextAlignment(.center)
          .foregroundStyle(Colors.whiteColor)
          .tint(Colors.whiteColor)
          .font(Fonts.basicRegularFont)
          .padding()
          .background {
-            RoundedRectangle(cornerRadius: 16)
-               .fill(Colors.secondaryColor)
-               .opacity(0.1)
-               .frame(height: 48)
+            RoundedRectangle(cornerRadius: 18)
+               .fill(Colors.whiteColor.opacity(0.1))
+               .frame(height: 45)
          }
    }
 }
@@ -52,11 +50,11 @@ struct MainButtonFrame: View {
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 16)
+         RoundedRectangle(cornerRadius: 18)
             .fill(backgroundColor)
-            .frame(height: 48)
+            .frame(height: 45)
          Text(title)
-            .font(Fonts.secondBoldFont)
+            .font(Fonts.hashMediumFont)
             .foregroundStyle(titleColor)
       }
    }
@@ -90,7 +88,7 @@ struct ToolbarButtonFrame: View {
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 10)
+         RoundedRectangle(cornerRadius: 12)
             .fill(.black.opacity(0.4))
             .frame(width: 30, height: 30)
          Image(image)
@@ -106,11 +104,11 @@ struct ProfileToolbarButtonFrame: View {
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 10)
+         RoundedRectangle(cornerRadius: 12)
             .fill(Colors.random())
             .frame(width: 30, height: 30)
          Text(text)
-            .font(Fonts.secondMediumFont)
+            .font(Fonts.countSemiboldFont)
             .foregroundStyle(Colors.whiteColor)
       }
    }
@@ -123,7 +121,7 @@ struct PrimaryText: View {
       Text(text)
          .multilineTextAlignment(.leading)
          .font(Fonts.basicRegularFont)
-         .foregroundStyle(Colors.whiteColor)
+         .foregroundStyle(Colors.socialWhiteColor)
    }
 }
 
@@ -132,13 +130,15 @@ struct TitleSubtitleTextFrame: View {
    var subText: String
 
    var body: some View {
-      Text(titleText)
-         .font(Fonts.basicRegularFont)
-         .foregroundStyle(Colors.whiteColor)
+      VStack(alignment: .leading, spacing: 4) {
+         Text(titleText)
+            .font(Fonts.hashMediumFont)
+            .foregroundStyle(Colors.whiteColor)
 
-      Text(subText)
-         .font(Fonts.basicRegularFont)
-         .foregroundStyle(Colors.grayColor)
+         Text(subText)
+            .font(Fonts.basicRegularFont)
+            .foregroundStyle(Colors.lighterGrayWhite)
+      }
    }
 }
 
@@ -147,14 +147,14 @@ struct PushButtonFrame: View {
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 14)
-            .fill(Colors.secondaryColor)
-            .frame(width: 42, height: 42)
+         RoundedRectangle(cornerRadius: 16)
+            .fill(Colors.whiteColor)
+            .frame(width: 40, height: 40)
 
          Image(image)
             .resizable()
-            .frame(width: 28, height: 28)
-            .foregroundStyle(Colors.whiteColor)
+            .frame(width: 24, height: 24)
+            .foregroundStyle(Colors.darkBlackColor)
       }
    }
 }
@@ -164,12 +164,12 @@ struct ProfileImageFrame: View {
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 14)
+         RoundedRectangle(cornerRadius: 16)
             .fill(Colors.random())
-            .frame(width: 42, height: 42)
+            .frame(width: 40, height: 40)
 
          Text(text)
-            .font(Fonts.secondBoldFont)
+            .font(Fonts.titleRegularFont)
             .foregroundStyle(Colors.whiteColor)
       }
    }
@@ -184,13 +184,25 @@ struct PostButtonTextImageFrame: View {
          Image(image)
             .resizable()
             .frame(width: 16, height: 16)
-            .foregroundStyle(Colors.grayColor)
+            .foregroundStyle(Colors.lighterGrayWhite)
 
          Text(text)
-            .font(Fonts.secondRegularFont)
-            .foregroundStyle(Colors.grayColor)
+            .font(Fonts.countRegularFont)
+            .foregroundStyle(Colors.lighterGrayWhite)
             .padding(.leading, -4)
       }
+   }
+}
+
+struct ButtonTextFrame: View {
+   var text: String
+
+   var body: some View {
+      Text(text)
+         .font(Fonts.hashMediumFont)
+         .foregroundStyle(Colors.lighterGrayWhite)
+
+
    }
 }
 
@@ -201,6 +213,6 @@ struct PostButtonImage: View {
       Image(image)
          .resizable()
          .frame(width: 16, height: 16)
-         .foregroundStyle(Colors.grayColor)
+         .foregroundStyle(Colors.lighterGrayWhite)
    }
 }

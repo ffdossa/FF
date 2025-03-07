@@ -30,17 +30,18 @@ struct HomeView: View {
       NavigationStack {
          ZStack(alignment: .bottomTrailing) {
             PostScrollView()
-            
+
             Button {
                viewModel.showingNewItemView = true
             } label: {
-               PushButtonFrame(image: "add")
+               PushButtonFrame(image: "plus")
             }
+            .padding(.bottom)
          }
-         .padding(10)
+         .padding(.horizontal)
 
-         .background(Colors.primaryColor)
-         
+         .background(Colors.darkBlackColor)
+
          .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                NavigationLink {
@@ -49,7 +50,7 @@ struct HomeView: View {
                   ProfileToolbarButtonFrame(text: "F")
                }
             }
-            
+
             ToolbarItem(placement: .topBarTrailing) {
                Button {
                   // ACTION LOGOUT
@@ -67,7 +68,7 @@ struct HomeView: View {
       .overlay(
          ZStack {
             if viewModel.showImageViewer {
-               Colors.primaryColor
+               Colors.darkBlackColor
                   .opacity(viewModel.bgOpacity)
                   .ignoresSafeArea()
 
@@ -75,7 +76,7 @@ struct HomeView: View {
             }
          }
       )
-         
+
       .environmentObject(viewModel)
    }
 }
@@ -87,19 +88,21 @@ struct PostScrollView: View {
 
    var body: some View {
       ScrollView(.vertical) {
-         HStack(alignment: .top, spacing: 8) {
-            NavigationLink {
-               ProfileView()
-            } label: {
-               ProfileImageFrame(text: "A")
-            }
-
-            VStack(alignment: .leading, spacing: 4) {
+         ForEach(0..<10, id:\.self) { _ in
+            Divider()
+            VStack(alignment: .leading, spacing: 16) {
                HStack(spacing: 8) {
+                  NavigationLink {
+                     ProfileView()
+                  } label: {
+                     ProfileImageFrame(text: "A")
+                  }
+
                   NavigationLink {
                      // action post view
                   } label: {
-                     TitleSubtitleTextFrame(titleText: "Andrii M.", subText: "@ffdossa")
+                     TitleSubtitleTextFrame(titleText: "FFDOSSA",
+                                            subText: "@ffdossa")
                   }
 
                   Spacer()
@@ -110,7 +113,7 @@ struct PostScrollView: View {
                      Image("menu-dots")
                         .resizable()
                         .frame(width: 20, height: 20)
-                        .tint(Colors.grayColor)
+                        .tint(Colors.lighterGrayWhite)
                   }
                }
 
@@ -121,35 +124,35 @@ struct PostScrollView: View {
 
                }
 
-               ChipsView {
-                  ForEach(viewModel.allImages.indices, id: \.self) { index in
-                     GridImageView(index: index)
-                  }
-               }
+               GridLayoutView()
 
-               HStack(spacing: 12) {
+               HStack(spacing: 16) {
                   NavigationLink {
                      // actions
                   } label: {
-                     PostButtonTextImageFrame(image: "chat", text: "11k")
+                     PostButtonTextImageFrame(image: "chat",
+                                              text: "11k")
                   }
 
                   NavigationLink {
                      // actions
                   } label: {
-                     PostButtonTextImageFrame(image: "repost", text: "22k")
+                     PostButtonTextImageFrame(image: "repost",
+                                              text: "22k")
                   }
 
                   Button {
                      // actions
                   } label: {
-                     PostButtonTextImageFrame(image: "heart", text: "33k")
+                     PostButtonTextImageFrame(image: "heart",
+                                              text: "33k")
                   }
 
                   NavigationLink {
                      // actions
                   } label: {
-                     PostButtonTextImageFrame(image: "chart", text: "44k")
+                     PostButtonTextImageFrame(image: "chart",
+                                              text: "44k")
                   }
 
                   Spacer()
@@ -165,7 +168,45 @@ struct PostScrollView: View {
                   }
                }
             }
+            .padding(.top)
          }
+      }
+   }
+}
+
+struct GridLayoutView: View {
+   @EnvironmentObject var viewModel: HomeViewModel
+
+   var body: some View {
+      if viewModel.allImages.count == 3 {
+         HStack(spacing: 8) {
+            GridImageView(index: 0)
+            VStack(spacing: 8) {
+               GridImageView(index: 1)
+               GridImageView(index: 2)
+            }
+         }
+         .frame(height: 235)
+      } else {
+         VStack(spacing: 8) {
+            if viewModel.allImages.count >= 1 {
+               HStack(spacing: 8) {
+                  GridImageView(index: 0)
+                  if viewModel.allImages.count >= 2 {
+                     GridImageView(index: 1)
+                  }
+               }
+            }
+            if viewModel.allImages.count >= 3 {
+               HStack(spacing: 8) {
+                  GridImageView(index: 2)
+                  if viewModel.allImages.count >= 4 {
+                     GridImageView(index: 3)
+                  }
+               }
+            }
+         }
+         .frame(height: viewModel.allImages.count <= 2 ? 235 : 235)
       }
    }
 }

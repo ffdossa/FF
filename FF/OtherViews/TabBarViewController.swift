@@ -21,8 +21,28 @@ class TabBarViewController: UIViewController {
 
 // MARK: View
 
-struct MainView: View {
+//enum TabBar: String, CaseIterable {
+//   case home = "home"
+//   case search = "search"
+//   case direct = "direct"
+//   case notification = "notification"
+//
+//   var imageFill: String {
+//      switch self {
+//      case .home:
+//         return "home.fill"
+//      case .search:
+//         return "search.fill"
+//      case .direct:
+//         return "direct.fill"
+//      case .notification:
+//         return "notification.fill"
+//      }
+//   }
+//}
 
+struct MainView: View {
+   @State private var selectedTab: Int = 0
    @State private var offset: CGFloat = 0
    @State private var lastDragOffser: CGFloat = 0
    @State private var progress: CGFloat = 0
@@ -30,7 +50,7 @@ struct MainView: View {
    var body: some View {
       GeometryReader { proxy in
          let size = proxy.size
-         let sideBarWidth = size.width * (2.4 / 3)
+         let sideBarWidth = size.width * (2.5 / 3)
 
          ZStack(alignment: .leading) {
             SideBarView()
@@ -38,27 +58,30 @@ struct MainView: View {
                .offset(x: -sideBarWidth)
                .offset(x: offset)
 
-            TabView() {
+            TabView(selection: $selectedTab) {
                HomeView()
                   .tabItem {
-                     Image("home")
+                     Image(selectedTab == 0 ? "home.fill" : "home")
                   }
-
+                  .tag(0)
 
                SearchView()
                   .tabItem {
-                     Image("search")
+                     Image(selectedTab == 1 ? "search.fill" : "search")
                   }
-
-               NotificationView()
-                  .tabItem {
-                     Image("notification")
-                  }
+                  .tag(1)
 
                DirectView()
                   .tabItem {
-                     Image("direct")
+                     Image(selectedTab == 2 ? "direct.fill" : "direct")
                   }
+                  .tag(2)
+
+               NotificationView()
+                  .tabItem {
+                     Image(selectedTab == 3 ? "notification.fill" : "notification")
+                  }
+                  .tag(3)
             }
             .overlay {
                Rectangle()
@@ -91,6 +114,25 @@ struct MainView: View {
          .accentColor(Colors.whiteColor)
       }
    }
+
+//   @ViewBuilder
+//   func TabBarActionButton(value: TabBar, action: @escaping () -> ()) -> some View {
+//      Button(action: action) {
+//         HStack(spacing: 30) {
+//            Image(value.rawValue)
+//               .resizable()
+//               .frame(width: 24, height: 24)
+//
+//            Image(value.imageFill)
+//               .resizable()
+//               .frame(width: 24, height: 24)
+//               .scaledToFit()
+//               .scaleEffect(selectedTab == 3 ? 1.3 : 1.0)
+//               .animation(.easeInOut(duration: 0.2), value: selectedTab)
+//         }
+//         .foregroundStyle(Colors.whiteColor)
+//      }
+//   }
 }
 
 #Preview {

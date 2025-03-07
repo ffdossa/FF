@@ -8,9 +8,9 @@
 import UIKit
 import SwiftUI
 
-class PreviewViewController: UIViewController {
+class OnboardingViewController: UIViewController {
 
-   var previewView = PreviewView()
+   var previewView = OnboardingView()
 
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -21,13 +21,12 @@ class PreviewViewController: UIViewController {
 
 // MARK: View
 
-struct PreviewView: View {
+struct OnboardingView: View {
    var body: some View {
       NavigationView {
          VStack {
             TitleText(title: "Welcome\nto\nFF app",
                       alignment: .center)
-
             Spacer()
 
             VStack(spacing: 12) {
@@ -43,21 +42,21 @@ struct PreviewView: View {
                   LogInView()
                } label: {
                   MainButtonFrame(title: "Log in",
-                            titleColor: Colors.primaryColor,
+                            titleColor: Colors.darkBlackColor,
                             backgroundColor: Colors.whiteColor)
                }
             }
          }
-         .padding(12)
+         .padding()
 
-         .background(Colors.primaryColor)
+         .background(Colors.darkBlackColor)
       }
    }
 }
 
 #Preview {
-   PreviewView()
-      .background(Colors.primaryColor)
+   OnboardingView()
+      .background(Colors.darkBlackColor)
 }
 
 

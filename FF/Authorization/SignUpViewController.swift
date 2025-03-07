@@ -61,14 +61,14 @@ struct SignUpView: View {
             viewModel.createUser()
          } label: {
             MainButtonFrame(title: "Create account",
-                            titleColor: Colors.primaryColor,
+                            titleColor: Colors.darkBlackColor,
                             backgroundColor: Colors.whiteColor)
          }
          .disabled(!viewModel.isAuthFormValidate)
       }
-      .padding(12)
+      .padding()
 
-      .background(Colors.primaryColor)
+      .background(Colors.darkBlackColor)
 
       .toolbar {
          ToolbarItem(placement: .topBarLeading) {
@@ -85,5 +85,5 @@ struct SignUpView: View {
 
 #Preview {
    SignUpView()
-      .background(Colors.primaryColor)
+      .background(Colors.darkBlackColor)
 }

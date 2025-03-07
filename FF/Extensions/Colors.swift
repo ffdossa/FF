@@ -10,9 +10,11 @@ import SwiftUI
 
 enum Colors {
    static let whiteColor = Color.init(hexString: "#F4EFE9")
-   static let grayColor = Color.init(hexString: "#8B99A6")
-   static let primaryColor = Color.init(hexString: "#162C2A")
-   static let secondaryColor = Color.init(hexString: "#0D676C")
+   static let darkBlackColor = Color.init(hexString: "#181A1C")
+   static let socialWhiteColor = Color.init(hexString: "#ECEBED")
+   static let lighterGrayWhite = Color.init(hexString: "#727477")
+   static let pinkColor = Color.init(hexString: "#AC1AF0")
+
 
    static func random() -> Color {
        return Color(

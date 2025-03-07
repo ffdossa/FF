@@ -21,18 +21,20 @@ struct GridImageView: View {
       }, label: {
          ZStack {
             // Show only four grids
-            if index <= 3 {
+            if index <= 2 {
                Image(viewModel.allImages[index])
                   .resizable()
                   .aspectRatio(contentMode: .fill)
-                  .frame(width: getWidth(index: index), height: 96)
+                  .frame(width: getWidth(index: index), height: getHeight(index: index))
                   .cornerRadius(8)
+                  .clipped()
             }
 
             // Show the count of remaining images
             if viewModel.allImages.count > 4 && index == 3 {
                RoundedRectangle(cornerRadius: 8)
-                  .fill(Colors.grayColor.opacity(0.2))
+                  .fill(Colors.lighterGrayWhite.opacity(0.4))
+                  .frame(width: getWidth(index: index), height: getHeight(index: index))
 
                let remainingImages = viewModel.allImages.count - 4
                Text("+\(remainingImages)")
@@ -43,18 +45,46 @@ struct GridImageView: View {
       })
    }
 
-   // Expand image size when space is availble
    func getWidth(index: Int) -> CGFloat {
-      let width = rect.width - 78
-      if viewModel.allImages.count % 2 == 0 {
-         return width / 2
-      } else {
-         if index == viewModel.allImages.count - 1 {
-            return width + 8
-         } else {
-            return width / 2
-         }
-      }
+       let totalWidth = rect.width - 32
+       let imageCount = min(viewModel.allImages.count, 4)
+
+       switch imageCount {
+       case 1:
+           return totalWidth // Full width for single image
+       case 2:
+           return totalWidth / 2 // Split evenly for 2 images
+       case 3:
+           if index == 0 {
+               return totalWidth / 2 // Left image takes half
+           } else {
+               return totalWidth / 2 // Right side images take half together
+           }
+       case 4:
+           return totalWidth / 2 // Each image takes half width
+       default:
+           return totalWidth / 2 // Fallback (shouldn't occur)
+       }
+   }
+
+   // Calculate height based on number of images
+   func getHeight(index: Int) -> CGFloat {
+       let imageCount = min(viewModel.allImages.count, 4)
+
+       switch imageCount {
+       case 1, 2:
+           return 235 // Full height for 1 or 2 images
+       case 3:
+           if index == 0 {
+               return 235 // Left image takes full height
+           } else {
+               return 113.5 // Right side images split height (235 - 8 spacing) / 2
+           }
+       case 4:
+           return 113.5 // Each image gets half height (235 - 8 spacing) / 2
+       default:
+           return 235 // Fallback
+       }
    }
 }
 

@@ -39,7 +39,7 @@ enum SideBarAction: String, CaseIterable {
       case .bookmarks:
          return "bookmark"
       case .jobs:
-         return "work"
+         return "jobs"
       case .list:
          return "note"
       case .settings:
@@ -51,62 +51,65 @@ enum SideBarAction: String, CaseIterable {
 struct SideBarView: View {
 
    var body: some View {
-      VStack(alignment: .leading, spacing: 12) {
+      VStack(alignment: .leading, spacing: 10) {
          ProfileImageFrame(text: "A")
 
          VStack(alignment: .leading, spacing: 4) {
-            Text("Andrii M.")
-               .font(Fonts.secondBoldFont)
+            Text("FFDOSSA")
+               .font(Fonts.titleRegularFont)
                .foregroundStyle(Colors.whiteColor)
 
             Text("@ffdossa")
                .font(Fonts.basicRegularFont)
-               .foregroundStyle(Colors.grayColor)
+               .foregroundStyle(Colors.lighterGrayWhite)
          }
 
          HStack() {
             Button {
                // FOLLOWING BUTTON
             } label: {
-               FollowButtonFrame(countText: "11k",
-                                 text: "Following")
+               ProfileFollowFrame(countText: "11,231",
+                                  text: "Following")
             }
 
             Button {
                // FOLLOWERS BUTTON
             } label: {
-               FollowButtonFrame(countText: "22k",
-                                 text: "Followers")
+               ProfileFollowFrame(countText: "22,213",
+                                  text: "Followers")
             }
          }
+
+
          Divider()
 
          ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 26) {
                ForEach(SideBarAction.allCases, id: \.rawValue) { action in
                   SideBarActionButton(value: action) {
-
+                     // ACTION
                   }
                }
             }
          }
       }
-      .padding(28)
+      .padding(.leading, 30)
 
-      .background(Colors.primaryColor)
+      .background(Colors.darkBlackColor)
+
       .scrollIndicators(.hidden)
    }
 
    @ViewBuilder
    func SideBarActionButton(value: SideBarAction, action: @escaping () -> ()) -> some View {
       Button(action: action) {
-         HStack(spacing: 24) {
+         HStack(spacing: 30) {
             Image(value.image)
                .resizable()
-               .frame(width: 28, height: 28)
+               .frame(width: 24, height: 24)
 
             Text(value.rawValue)
-               .font(Fonts.subtitleFont)
+               .font(Fonts.titleRegularFont)
          }
          .foregroundStyle(Colors.whiteColor)
       }
