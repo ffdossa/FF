@@ -33,6 +33,7 @@ struct SearchView: View {
          LazyVStack(spacing: 16) {
 
          }
+
          .safeAreaPadding(16)
          .safeAreaInset(edge: .top, spacing: 0) {
             SearchNavigationBar()
@@ -55,19 +56,19 @@ struct SearchView: View {
          VStack(spacing: 12) {
             HStack(spacing: 12) {
                Image("search")
-                  .font(Fonts.subtitleFont)
                   .foregroundStyle(Colors.whiteColor)
 
-               TextField("", text: $searchText, prompt: Text("Search for people, posts, tags...").foregroundStyle(Colors.lighterGrayWhite))
+               TextField("", text: $searchText, prompt: Text("Search for people, posts, tags...")
+                  .font(Fonts.subtitleRegularFont)
+                  .foregroundStyle(Colors.lighterGrayWhite))
                   .focused($isSearching)
-                  .padding()
+                  .padding(.vertical, 12)
 
                if isSearching {
                   Button(action: {
                      isSearching = false
                   }) {
                      Image("close")
-                        .font(Fonts.subtitleFont)
                         .tint(Colors.lighterGrayWhite)
                   }
                   .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
@@ -76,9 +77,8 @@ struct SearchView: View {
             .foregroundStyle(Colors.whiteColor)
             .tint(Colors.pinkColor)
             .padding(.horizontal, 16 - (progress * 16))
-            .frame(height: 45)
             .background {
-               RoundedRectangle(cornerRadius: 18 - (progress * 18))
+               RoundedRectangle(cornerRadius: 24 - (progress * 24))
                   .fill(Colors.whiteColor.opacity(0.1))
                   .padding(.top, -progress * 100)
                   .padding(.bottom, -progress * 60)
@@ -95,22 +95,22 @@ struct SearchView: View {
                      }) {
                         ZStack {
                            if selectedTab == tab {
-                              RoundedRectangle(cornerRadius: 12)
+                              Capsule()
                                  .fill(Colors.pinkColor)
                            } else {
-                              RoundedRectangle(cornerRadius: 12)
-                                 .fill(Colors.lighterGrayWhite.opacity(0.2))
+                              Capsule()
+                                 .fill(Colors.lighterGrayWhite.opacity(0.1))
                            }
                            Text(tab.rawValue)
-                              .font(Fonts.hashMediumFont)
+                              .font(selectedTab == tab ? Fonts.hashSemiboldFont : Fonts.basicRegularFont)
                               .foregroundStyle(selectedTab == tab ? (scheme == .dark ? Colors.whiteColor : .white) : Colors.lighterGrayWhite)
                               .padding(.horizontal, 16)
+                              .padding(.vertical, 8)
                         }
                      }
                   }
                }
             }
-            .frame(height: 30)
             .scrollIndicators(.hidden)
          }
          .padding(.top, 24)

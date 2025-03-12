@@ -27,8 +27,7 @@ struct LogInView: View {
 
    var body: some View {
       VStack(alignment: .leading) {
-         // Header
-         VStack(alignment: .leading, spacing: 16) {
+         VStack(alignment: .leading, spacing: 12) {
             TitleText(title: "Welcome back.",
                       alignment: .leading)
 
@@ -38,7 +37,7 @@ struct LogInView: View {
          Spacer()
 
          // Input Fields
-         VStack(spacing: 8) {
+         VStack(spacing: 12) {
             LoginTextField(text: $viewModel.login)
 
             PasswordSecureField(text: $viewModel.password)
@@ -83,6 +82,5 @@ struct LogInView: View {
 
 #Preview {
    LogInView()
-      .background(Colors.darkBlackColor)
 }
 

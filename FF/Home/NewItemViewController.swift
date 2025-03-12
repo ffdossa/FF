@@ -36,7 +36,7 @@ struct NewItemView: View {
             Button {
                // PUSH PROFILE
             } label: {
-               ProfileToolbarButtonFrame(text: "A")
+               ProfileImageFrame(image: "profile")
             }
 
             TextField("What's happening?", text: $viewModel.title, axis: .vertical)
@@ -59,7 +59,7 @@ struct NewItemView: View {
             PushButtonFrame(image: "arrow-up")
          }
       }
-      .padding(12)
+      .padding()
 
       .background(Colors.darkBlackColor)
 

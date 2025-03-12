@@ -15,12 +15,12 @@ struct LoginTextField: View {
          .multilineTextAlignment(.center)
          .foregroundStyle(Colors.whiteColor)
          .tint(Colors.whiteColor)
-         .font(Fonts.basicRegularFont)
-         .padding()
+         .font(Fonts.subtitleRegularFont)
+         .padding(.vertical, 12)
+         .padding(.horizontal, 16)
          .background {
-            RoundedRectangle(cornerRadius: 18)
+            RoundedRectangle(cornerRadius: 24)
                .fill(Colors.whiteColor.opacity(0.1))
-               .frame(height: 45)
          }
    }
 }
@@ -33,12 +33,12 @@ struct PasswordSecureField: View {
          .multilineTextAlignment(.center)
          .foregroundStyle(Colors.whiteColor)
          .tint(Colors.whiteColor)
-         .font(Fonts.basicRegularFont)
-         .padding()
+         .font(Fonts.subtitleRegularFont)
+         .padding(.vertical, 12)
+         .padding(.horizontal, 16)
          .background {
-            RoundedRectangle(cornerRadius: 18)
+            RoundedRectangle(cornerRadius: 24)
                .fill(Colors.whiteColor.opacity(0.1))
-               .frame(height: 45)
          }
    }
 }
@@ -50,11 +50,12 @@ struct MainButtonFrame: View {
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 18)
+         RoundedRectangle(cornerRadius: 24)
             .fill(backgroundColor)
-            .frame(height: 45)
+            .frame(height: 48)
+
          Text(title)
-            .font(Fonts.hashMediumFont)
+            .font(Fonts.subtitleMediumFont)
             .foregroundStyle(titleColor)
       }
    }
@@ -88,33 +89,34 @@ struct ToolbarButtonFrame: View {
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 12)
+         Circle()
             .fill(.black.opacity(0.4))
-            .frame(width: 30, height: 30)
+            .frame(width: 36, height: 36)
          Image(image)
             .resizable()
-            .frame(width: 20, height: 20)
+            .frame(width: 24, height: 24)
             .foregroundStyle(Colors.whiteColor)
       }
    }
 }
 
 struct ProfileToolbarButtonFrame: View {
-   var text: String
+   var image: String
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 12)
-            .fill(Colors.random())
-            .frame(width: 30, height: 30)
-         Text(text)
-            .font(Fonts.countSemiboldFont)
-            .foregroundStyle(Colors.whiteColor)
+         Circle()
+            .fill(.black.opacity(0.4))
+            .frame(width: 36, height: 36)
+         Image(image)
+            .resizable()
+            .frame(width: 24, height: 24)
+            .foregroundStyle(Colors.random())
       }
    }
 }
 
-struct PrimaryText: View {
+struct PostText: View {
    var text: String
 
    var body: some View {
@@ -132,11 +134,11 @@ struct TitleSubtitleTextFrame: View {
    var body: some View {
       VStack(alignment: .leading, spacing: 4) {
          Text(titleText)
-            .font(Fonts.hashMediumFont)
+            .font(Fonts.hashSemiboldFont)
             .foregroundStyle(Colors.whiteColor)
 
          Text(subText)
-            .font(Fonts.basicRegularFont)
+            .font(Fonts.countRegularFont)
             .foregroundStyle(Colors.lighterGrayWhite)
       }
    }
@@ -147,66 +149,76 @@ struct PushButtonFrame: View {
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 16)
+         Circle()
             .fill(Colors.whiteColor)
-            .frame(width: 40, height: 40)
+            .frame(width: 48, height: 48)
 
          Image(image)
             .resizable()
-            .frame(width: 24, height: 24)
+            .frame(width: 36, height: 36)
             .foregroundStyle(Colors.darkBlackColor)
       }
    }
 }
 
 struct ProfileImageFrame: View {
-   var text: String
+   var image: String
 
    var body: some View {
       ZStack {
-         RoundedRectangle(cornerRadius: 16)
-            .fill(Colors.random())
-            .frame(width: 40, height: 40)
+         Circle()
+            .fill(.black.opacity(0.4))
+            .frame(width: 42, height: 42)
 
-         Text(text)
-            .font(Fonts.titleRegularFont)
+         Image(image)
+            .resizable()
+            .frame(width: 28, height: 28)
             .foregroundStyle(Colors.whiteColor)
       }
    }
 }
 
-struct PostButtonTextImageFrame: View {
-   var image: String
+struct ProfileFollowFrame: View {
+   var countText: String
    var text: String
 
    var body: some View {
-      HStack {
-         Image(image)
-            .resizable()
-            .frame(width: 16, height: 16)
-            .foregroundStyle(Colors.lighterGrayWhite)
+      HStack(alignment: .center, spacing: 8) {
+         Text(countText)
+            .font(Fonts.hashMediumFont)
+            .foregroundStyle(Colors.whiteColor)
 
          Text(text)
-            .font(Fonts.countRegularFont)
+            .font(Fonts.hashRegularFont)
             .foregroundStyle(Colors.lighterGrayWhite)
-            .padding(.leading, -4)
+
       }
    }
 }
 
-struct ButtonTextFrame: View {
+struct BottomTextFrame: View {
+   var text: String
+
+   var body: some View {
+         Text(text)
+            .font(Fonts.countRegularFont)
+            .foregroundStyle(Colors.lighterGrayWhite)
+            .padding(.leading, -4)
+   }
+}
+
+
+struct LocationTextFrame: View {
    var text: String
 
    var body: some View {
       Text(text)
          .font(Fonts.hashMediumFont)
          .foregroundStyle(Colors.lighterGrayWhite)
-
-
    }
 }
 
-struct PostButtonImage: View {
+struct BottomPostImage: View {
    var image: String
 
    var body: some View {

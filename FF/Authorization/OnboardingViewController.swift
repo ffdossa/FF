@@ -56,7 +56,6 @@ struct OnboardingView: View {
 
 #Preview {
    OnboardingView()
-      .background(Colors.darkBlackColor)
 }
 
 

@@ -29,7 +29,9 @@ struct HomeView: View {
    var body: some View {
       NavigationStack {
          ZStack(alignment: .bottomTrailing) {
-            PostScrollView()
+            ScrollView(.vertical) {
+               PostView()
+            }
 
             Button {
                viewModel.showingNewItemView = true
@@ -47,7 +49,7 @@ struct HomeView: View {
                NavigationLink {
                   ProfileView()
                } label: {
-                  ProfileToolbarButtonFrame(text: "F")
+                  ToolbarButtonFrame(image: "profile")
                }
             }
 
@@ -81,96 +83,90 @@ struct HomeView: View {
    }
 }
 
-// MARK: SubView
+// MARK: Sub View
 
-struct PostScrollView: View {
+struct PostView: View {
    @StateObject var viewModel = HomeViewModel(userId: "")
 
    var body: some View {
-      ScrollView(.vertical) {
-         ForEach(0..<10, id:\.self) { _ in
-            Divider()
-            VStack(alignment: .leading, spacing: 16) {
-               HStack(spacing: 8) {
-                  NavigationLink {
-                     ProfileView()
-                  } label: {
-                     ProfileImageFrame(text: "A")
-                  }
+      VStack(alignment: .leading, spacing: 16) {
+         HStack(spacing: 8) {
+            NavigationLink {
+               ProfileView()
+            } label: {
+               ProfileImageFrame(image: "profile")
+            }
 
-                  NavigationLink {
-                     // action post view
-                  } label: {
-                     TitleSubtitleTextFrame(titleText: "FFDOSSA",
-                                            subText: "@ffdossa")
-                  }
+            NavigationLink {
+               // action post view
+            } label: {
+               TitleSubtitleTextFrame(titleText: "Steve Aoki",
+                                      subText: "@ffdossa")
+            }
 
-                  Spacer()
+            Spacer()
 
-                  Button {
-                     // ACTION SETTINGS MENU POST
-                  } label: {
-                     Image("menu-dots")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .tint(Colors.lighterGrayWhite)
-                  }
-               }
+            Button {
+               // ACTION SETTINGS MENU POST
+            } label: {
+               Image("menu-dots")
+                  .resizable()
+                  .frame(width: 20, height: 20)
+                  .tint(Colors.lighterGrayWhite)
+            }
+         }
 
-               NavigationLink {
-                  // action post view
-               } label: {
-                  PrimaryText(text: "Some more text here. Some more text here. Some more text here. Some more text here. Some more text here. Some more text here.")
+         NavigationLink {
+            // action post view
+         } label: {
+            PostText(text: "Some more text here. Some more text here. Some more text here. Some more text here. Some more text here. Some more text here.")
 
-               }
+         }
 
-               GridLayoutView()
+         GridLayoutView()
 
-               HStack(spacing: 16) {
-                  NavigationLink {
-                     // actions
-                  } label: {
-                     PostButtonTextImageFrame(image: "chat",
-                                              text: "11k")
-                  }
-
-                  NavigationLink {
-                     // actions
-                  } label: {
-                     PostButtonTextImageFrame(image: "repost",
-                                              text: "22k")
-                  }
-
-                  Button {
-                     // actions
-                  } label: {
-                     PostButtonTextImageFrame(image: "heart",
-                                              text: "33k")
-                  }
-
-                  NavigationLink {
-                     // actions
-                  } label: {
-                     PostButtonTextImageFrame(image: "chart",
-                                              text: "44k")
-                  }
-
-                  Spacer()
-
-                  Button {
-                     // action
-                  } label: {
-                     PostButtonImage(image: "bookmark")
-                  }
-
-                  ShareLink(item: URL(string: "https://github.com/ffdossa")!) {
-                     PostButtonImage(image: "share")
-                  }
+         HStack(spacing: 16) {
+            NavigationLink {
+               // CHAT ACTION
+            } label: {
+               HStack {
+                  BottomPostImage(image: "chat")
+                  BottomTextFrame(text: "11")
                }
             }
-            .padding(.top)
+
+            NavigationLink {
+               // REPOST VIEW ACTION
+            } label: {
+               HStack {
+                  BottomPostImage(image: "repost")
+                  BottomTextFrame(text: "110")
+               }
+            }
+
+            Button {
+               // LIKES BUTTON ACTION
+            } label: {
+               HStack {
+                  BottomPostImage(image: "heart")
+                  BottomTextFrame(text: "1.1k")
+               }
+            }
+
+            Spacer()
+
+            Button {
+               // PUSH ADD BOOKMARK ACTION
+            } label: {
+               BottomPostImage(image: "bookmark")
+            }
+            // SHARE LINK
+            ShareLink(item: URL(string: "https://github.com/ffdossa")!) {
+               BottomPostImage(image: "share")
+            }
          }
       }
+      .padding(.top, 8)
    }
 }
 

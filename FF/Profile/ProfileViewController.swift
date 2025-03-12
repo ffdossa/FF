@@ -29,58 +29,30 @@ struct ProfileView: View {
 
    var body: some View {
       NavigationStack {
-         VStack(alignment: .center) {
-            ProfileHeaderView()
-               .padding(.bottom, 75)
-            VStack(alignment: .leading, spacing: 16) {
-               VStack(alignment: .leading, spacing: 2) {
-                  HStack(alignment: .center) {
-                     Text("Andrii Marchuk")
-                        .font(Fonts.titleRegularFont)
-                        .foregroundStyle(Colors.whiteColor)
+         ZStack(alignment: .bottomTrailing) {
+            ScrollView(.vertical) {
+               LazyVStack(alignment: .center, spacing: 12) {
+                  ProfileHeaderView()
 
-                     Text("@ffdossa")
-                        .font(Fonts.hashMediumFont)
-                        .foregroundStyle(Colors.lighterGrayWhite)
-                  }
+                  ProfileSectionView()
+                     .padding(.bottom, -12)
 
-                  ButtonTextFrame(text: "Kyiv, Ukraine")
+                  Divider()
 
-               }
-
-               HStack() {
-                  Button {
-                     // FOLLOWING BUTTON
-                  } label: {
-                     ProfileFollowFrame(countText: "11,231",
-                                        text: "Following")
-                  }
-
-                  Button {
-                     // FOLLOWERS BUTTON
-                  } label: {
-                     ProfileFollowFrame(countText: "22,213",
-                                        text: "Followers")
-                  }
-               }
-
-               ProfileSectionView()
-
-               ZStack(alignment: .bottomTrailing) {
-                  PostScrollView()
-
-                  Button {
-                     viewModel.showingNewItemView = true
-                  } label: {
-                     PushButtonFrame(image: "plus")
-                  }
-                  .padding(.bottom)
+                  PostView()
+                     .padding(.horizontal)
                }
             }
-            .padding(.horizontal)
+
+            Button {
+               viewModel.showingNewItemView = true
+            } label: {
+               PushButtonFrame(image: "plus")
+            }
+            .padding(.bottom)
+            .padding(.trailing)
          }
          .background(Colors.darkBlackColor)
-         .contentMargins(.top, 190, for: .scrollIndicators)
 
          .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -107,6 +79,7 @@ struct ProfileView: View {
                }
             }
          }
+         .navigationBarBackButtonHidden(true)
       }
 
       .sheet(isPresented: $viewModel.showingNewItemView) {
@@ -124,9 +97,8 @@ struct ProfileView: View {
             }
          }
       )
-      .environmentObject(viewModel)
 
-      .navigationBarBackButtonHidden(true)
+      .environmentObject(viewModel)
    }
 
    @ViewBuilder
@@ -140,7 +112,7 @@ struct ProfileView: View {
             }) {
                VStack {
                   Text(tab.rawValue)
-                     .font(Fonts.hashMediumFont)
+                     .font(selectedTab == tab ? Fonts.hashSemiboldFont : Fonts.basicRegularFont)
                      .foregroundStyle(selectedTab == tab ? (scheme == .dark ? Colors.whiteColor : .white) : Colors.lighterGrayWhite)
                      .padding(.horizontal, 4)
                      .padding(.bottom, 12)
@@ -162,74 +134,94 @@ struct ProfileView: View {
          }
       }
    }
-}
 
-struct ProfileHeaderView: View {
-   var body: some View {
-      ZStack(alignment: .bottom) {
-         Colors.lighterGrayWhite.opacity(0.2)
+   @ViewBuilder
+   func ProfileHeaderView() -> some View {
+      ZStack {
+         Rectangle()
+            .fill(Colors.lighterGrayWhite.opacity(0.1))
             .ignoresSafeArea()
-         HStack(alignment: .bottom) {
-            Text("A")
-               .font(Fonts.titleFont)
-               .foregroundStyle(Colors.whiteColor)
-               .background() {
-                  RoundedRectangle(cornerRadius: 30)
-                     .fill(Colors.random())
-                     .frame(width: 75, height: 75)
-                     .overlay(RoundedRectangle(cornerRadius: 30).stroke(Colors.darkBlackColor, lineWidth: 4))
+            .offset(y: -144)
+         VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .bottom) {
+               TitleProfileImageFrame(image: "profile")
+
+               Spacer()
+
+               Button {
+                  // FOLLOW,FOLLOWWING, EDIT PROFILE
+               } label: {
+                  Text("Edit Profile")
+                     .font(Fonts.countMediumFont)
+                     .foregroundStyle(Colors.whiteColor)
+                     .padding(.horizontal, 16)
+                     .padding(.vertical, 8)
+                     .background() {
+                        Capsule()
+                           .fill(Colors.lighterGrayWhite.opacity(0.1))
+                     }
+               }
+               .padding(.bottom, 12)
+            }
+
+            VStack(alignment: .leading, spacing: 2) {
+               Text("Steve Aoki")
+                  .font(Fonts.titleSemiboldFont)
+                  .foregroundStyle(Colors.whiteColor)
+
+               LocationTextFrame(text: "Los Angeles, United States")
+            }
+
+            HStack(spacing: 12) {
+               Button {
+                  // FOLLOWING BUTTON
+               } label: {
+                  ProfileFollowFrame(countText: "11,231",
+                                     text: "Followers")
                }
 
-            Spacer()
-
-            Button {
-               // FOLLOW,FOLLOWWING, EDIT PROFILE
-            } label: {
-               Text("Edit Profile")
-                  .font(Fonts.countSemiboldFont)
-                  .foregroundStyle(Colors.whiteColor)
-                  .padding(.horizontal, 12)
-
-                  .background() {
-                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Colors.lighterGrayWhite.opacity(0.2))
-                        .frame(width: .infinity, height: 30)
-                  }
+               Button {
+                  // FOLLOWERS BUTTON
+               } label: {
+                  ProfileFollowFrame(countText: "22,213",
+                                     text: "Following")
+               }
             }
-            .padding(.top, 20)
          }
-//
-         .padding(.trailing, 16)
-         .padding(.leading, 40)
-         .offset(y: 35)
+         .padding(.horizontal)
+         .padding(.top, 8)
       }
-      .frame(height: 12)
    }
 }
 
-struct ProfileFollowFrame: View {
-   var countText: String
-   var text: String
+struct TitleProfileImageFrame: View {
+   var image: String
 
    var body: some View {
-      HStack(alignment: .center, spacing: 4) {
-         Text(countText)
-            .font(Fonts.countSemiboldFont)
+      ZStack {
+         Circle()
+            .fill(Colors.pinkColor)
+            .frame(width: 88, height: 88)
+            .overlay(
+               Circle()
+                  .stroke(Colors.darkBlackColor, lineWidth: 4))
+
+         Image(image)
+            .resizable()
+            .frame(width: 60, height: 60)
             .foregroundStyle(Colors.whiteColor)
-
-         Text(text)
-            .font(Fonts.countRegularFont)
-            .foregroundStyle(Colors.lighterGrayWhite)
-
       }
    }
 }
-
 
 #Preview {
    ProfileView()
 }
 
+
+//                     Text("@ffdossa")
+//                        .font(Fonts.hashMediumFont)
+//                        .foregroundStyle(Colors.lighterGrayWhite)
 
 //                  PrimaryText(text: "Some more text here.")
 

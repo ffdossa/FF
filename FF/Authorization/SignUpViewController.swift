@@ -27,8 +27,7 @@ struct SignUpView: View {
 
    var body: some View {
       VStack(alignment: .leading) {
-         // Header
-         VStack(alignment: .leading, spacing: 16) {
+         VStack(alignment: .leading, spacing: 12) {
             TitleText(title: "Hello there.",
                       alignment: .leading)
 
@@ -40,7 +39,7 @@ struct SignUpView: View {
          // HERE PLASE FOR LOGIN GOOGLE, APPLE MAIL
 
          // Input Fields
-         VStack(spacing: 8) {
+         VStack(spacing: 12) {
             LoginTextField(text: $viewModel.login)
 
             PasswordSecureField(text: $viewModel.password)
@@ -64,6 +63,7 @@ struct SignUpView: View {
                             titleColor: Colors.darkBlackColor,
                             backgroundColor: Colors.whiteColor)
          }
+
          .disabled(!viewModel.isAuthFormValidate)
       }
       .padding()
@@ -85,5 +85,4 @@ struct SignUpView: View {
 
 #Preview {
    SignUpView()
-      .background(Colors.darkBlackColor)
 }

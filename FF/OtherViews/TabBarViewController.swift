@@ -85,7 +85,7 @@ struct MainView: View {
             }
             .overlay {
                Rectangle()
-                  .fill(Color.black.opacity(0.8))
+                  .fill(Color.black.opacity(0.6))
                   .ignoresSafeArea()
                   .opacity(progress)
             }

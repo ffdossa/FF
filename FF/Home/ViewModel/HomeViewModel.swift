@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
    @Published var imageViewerOffset: CGSize = .zero
    @Published var bgOpacity: Double = 1
    @Published var imageScale: CGFloat = 1
-   @Published var allImages: [String] = ["image"]
+   @Published var allImages: [String] = ["2", "3", "4", "5", "6"]
 
    private let userId: String
 

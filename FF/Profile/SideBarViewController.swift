@@ -17,7 +17,6 @@ class SideBarViewController: UIViewController {
 
       profileView.setupHostingController(self)
    }
-
 }
 
 // MARK: View
@@ -25,9 +24,9 @@ class SideBarViewController: UIViewController {
 enum SideBarAction: String, CaseIterable {
    case profile = "Profile"
    case communities = "Communities"
+   case jobs = "Messages"
+   case list = "Notifications"
    case bookmarks = "Bookmarks"
-   case jobs = "Jobs"
-   case list = "Lists"
    case settings = "Settings"
 
    var image: String {
@@ -51,17 +50,23 @@ enum SideBarAction: String, CaseIterable {
 struct SideBarView: View {
 
    var body: some View {
-      VStack(alignment: .leading, spacing: 10) {
-         ProfileImageFrame(text: "A")
+      VStack(alignment: .leading, spacing: 12) {
+         HStack(alignment: .center, spacing: 12) {
+            TitleProfileImageFrame(image: "profile")
 
-         VStack(alignment: .leading, spacing: 4) {
-            Text("FFDOSSA")
-               .font(Fonts.titleRegularFont)
-               .foregroundStyle(Colors.whiteColor)
+            VStack(alignment: .leading, spacing: 4) {
+               Text("Steve Aoki")
+                  .font(Fonts.titleSemiboldFont)
+                  .foregroundStyle(Colors.whiteColor)
 
-            Text("@ffdossa")
-               .font(Fonts.basicRegularFont)
-               .foregroundStyle(Colors.lighterGrayWhite)
+               Text("+380(63)-581-27-55")
+                  .font(Fonts.hashRegularFont)
+                  .foregroundStyle(Colors.lighterGrayWhite)
+
+               Text("@ffdossa")
+                  .font(Fonts.hashRegularFont)
+                  .foregroundStyle(Colors.lighterGrayWhite)
+            }
          }
 
          HStack() {
@@ -93,7 +98,9 @@ struct SideBarView: View {
             }
          }
       }
-      .padding(.leading, 30)
+      .padding(.top)
+      .padding(.leading, 32)
+      .padding(.trailing)
 
       .background(Colors.darkBlackColor)
 
@@ -103,13 +110,13 @@ struct SideBarView: View {
    @ViewBuilder
    func SideBarActionButton(value: SideBarAction, action: @escaping () -> ()) -> some View {
       Button(action: action) {
-         HStack(spacing: 30) {
+         HStack(spacing: 32) {
             Image(value.image)
                .resizable()
                .frame(width: 24, height: 24)
 
             Text(value.rawValue)
-               .font(Fonts.titleRegularFont)
+               .font(Fonts.subtitleRegularFont)
          }
          .foregroundStyle(Colors.whiteColor)
       }

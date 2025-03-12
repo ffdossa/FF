@@ -21,7 +21,7 @@ struct GridImageView: View {
       }, label: {
          ZStack {
             // Show only four grids
-            if index <= 2 {
+            if index <= 3 {
                Image(viewModel.allImages[index])
                   .resizable()
                   .aspectRatio(contentMode: .fill)
@@ -33,7 +33,7 @@ struct GridImageView: View {
             // Show the count of remaining images
             if viewModel.allImages.count > 4 && index == 3 {
                RoundedRectangle(cornerRadius: 8)
-                  .fill(Colors.lighterGrayWhite.opacity(0.4))
+                  .fill(Color.black.opacity(0.6))
                   .frame(width: getWidth(index: index), height: getHeight(index: index))
 
                let remainingImages = viewModel.allImages.count - 4
@@ -58,10 +58,10 @@ struct GridImageView: View {
            if index == 0 {
                return totalWidth / 2 // Left image takes half
            } else {
-               return totalWidth / 2 // Right side images take half together
+               return (totalWidth - 8) / 2 // Right side images take half together
            }
        case 4:
-           return totalWidth / 2 // Each image takes half width
+           return (totalWidth - 8) / 2 // Each image takes half width
        default:
            return totalWidth / 2 // Fallback (shouldn't occur)
        }
