@@ -59,7 +59,7 @@ struct SearchView: View {
                   .foregroundStyle(Colors.whiteColor)
 
                TextField("", text: $searchText, prompt: Text("Search for people, posts, tags...")
-                  .font(Fonts.subtitleRegularFont)
+                  .font(Fonts.regularFont)
                   .foregroundStyle(Colors.lighterGrayWhite))
                   .focused($isSearching)
                   .padding(.vertical, 12)
@@ -102,7 +102,7 @@ struct SearchView: View {
                                  .fill(Colors.lighterGrayWhite.opacity(0.1))
                            }
                            Text(tab.rawValue)
-                              .font(selectedTab == tab ? Fonts.hashSemiboldFont : Fonts.basicRegularFont)
+                              .font(selectedTab == tab ? Fonts.basicSemiboldFont : Fonts.basicRegularFont)
                               .foregroundStyle(selectedTab == tab ? (scheme == .dark ? Colors.whiteColor : .white) : Colors.lighterGrayWhite)
                               .padding(.horizontal, 16)
                               .padding(.vertical, 8)

@@ -100,8 +100,15 @@ struct PostView: View {
             NavigationLink {
                // action post view
             } label: {
-               TitleSubtitleTextFrame(titleText: "Steve Aoki",
-                                      subText: "@ffdossa")
+               VStack(alignment: .leading, spacing: 2) {
+                  Text("Steve Aoki")
+                     .font(Fonts.subSemiboldFont)
+                     .foregroundStyle(Colors.whiteColor)
+
+                  Text("@ffdossa")
+                     .font(Fonts.hashRegularFont)
+                     .foregroundStyle(Colors.lighterGrayWhite)
+               }
             }
 
             Spacer()
@@ -117,10 +124,12 @@ struct PostView: View {
          }
 
          NavigationLink {
-            // action post view
+            // ACTION TAP TO POST
          } label: {
-            PostText(text: "Some more text here. Some more text here. Some more text here. Some more text here. Some more text here. Some more text here.")
-
+            Text("The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.")
+               .multilineTextAlignment(.leading)
+               .font(Fonts.hashRegularFont)
+               .foregroundStyle(Colors.socialWhiteColor)
          }
 
          GridLayoutView()

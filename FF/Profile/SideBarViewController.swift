@@ -24,8 +24,8 @@ class SideBarViewController: UIViewController {
 enum SideBarAction: String, CaseIterable {
    case profile = "Profile"
    case communities = "Communities"
-   case jobs = "Messages"
-   case list = "Notifications"
+   case direct = "Messages"
+   case notification = "Notifications"
    case bookmarks = "Bookmarks"
    case settings = "Settings"
 
@@ -35,12 +35,12 @@ enum SideBarAction: String, CaseIterable {
          return "profile"
       case .communities:
          return "communities"
+      case .direct:
+         return "direct"
+      case .notification:
+         return "notification"
       case .bookmarks:
          return "bookmark"
-      case .jobs:
-         return "jobs"
-      case .list:
-         return "note"
       case .settings:
          return "setting"
       }
@@ -50,16 +50,25 @@ enum SideBarAction: String, CaseIterable {
 struct SideBarView: View {
 
    var body: some View {
-      VStack(alignment: .leading, spacing: 12) {
+      VStack(alignment: .leading, spacing: 16) {
          HStack(alignment: .center, spacing: 12) {
-            TitleProfileImageFrame(image: "profile")
+            ZStack {
+               Circle()
+                  .fill(Color.black.opacity(0.4))
+                  .frame(width: 72, height: 72)
+
+               Image("profile")
+                  .resizable()
+                  .frame(width: 48, height: 48)
+                  .foregroundStyle(Colors.whiteColor)
+            }
 
             VStack(alignment: .leading, spacing: 4) {
                Text("Steve Aoki")
                   .font(Fonts.titleSemiboldFont)
                   .foregroundStyle(Colors.whiteColor)
 
-               Text("+380(63)-581-27-55")
+               Text("+380(12)-345-67-89")
                   .font(Fonts.hashRegularFont)
                   .foregroundStyle(Colors.lighterGrayWhite)
 
@@ -68,23 +77,6 @@ struct SideBarView: View {
                   .foregroundStyle(Colors.lighterGrayWhite)
             }
          }
-
-         HStack() {
-            Button {
-               // FOLLOWING BUTTON
-            } label: {
-               ProfileFollowFrame(countText: "11,231",
-                                  text: "Following")
-            }
-
-            Button {
-               // FOLLOWERS BUTTON
-            } label: {
-               ProfileFollowFrame(countText: "22,213",
-                                  text: "Followers")
-            }
-         }
-
 
          Divider()
 

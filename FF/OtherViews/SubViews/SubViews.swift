@@ -15,7 +15,7 @@ struct LoginTextField: View {
          .multilineTextAlignment(.center)
          .foregroundStyle(Colors.whiteColor)
          .tint(Colors.whiteColor)
-         .font(Fonts.subtitleRegularFont)
+         .font(Fonts.regularFont)
          .padding(.vertical, 12)
          .padding(.horizontal, 16)
          .background {
@@ -33,7 +33,7 @@ struct PasswordSecureField: View {
          .multilineTextAlignment(.center)
          .foregroundStyle(Colors.whiteColor)
          .tint(Colors.whiteColor)
-         .font(Fonts.subtitleRegularFont)
+         .font(Fonts.regularFont)
          .padding(.vertical, 12)
          .padding(.horizontal, 16)
          .background {
@@ -91,10 +91,10 @@ struct ToolbarButtonFrame: View {
       ZStack {
          Circle()
             .fill(.black.opacity(0.4))
-            .frame(width: 36, height: 36)
+            .frame(width: 30, height: 30)
          Image(image)
             .resizable()
-            .frame(width: 24, height: 24)
+            .frame(width: 20, height: 20)
             .foregroundStyle(Colors.whiteColor)
       }
    }
@@ -107,39 +107,11 @@ struct ProfileToolbarButtonFrame: View {
       ZStack {
          Circle()
             .fill(.black.opacity(0.4))
-            .frame(width: 36, height: 36)
+            .frame(width: 30, height: 30)
          Image(image)
             .resizable()
-            .frame(width: 24, height: 24)
+            .frame(width: 20, height: 20)
             .foregroundStyle(Colors.random())
-      }
-   }
-}
-
-struct PostText: View {
-   var text: String
-
-   var body: some View {
-      Text(text)
-         .multilineTextAlignment(.leading)
-         .font(Fonts.basicRegularFont)
-         .foregroundStyle(Colors.socialWhiteColor)
-   }
-}
-
-struct TitleSubtitleTextFrame: View {
-   var titleText: String
-   var subText: String
-
-   var body: some View {
-      VStack(alignment: .leading, spacing: 4) {
-         Text(titleText)
-            .font(Fonts.hashSemiboldFont)
-            .foregroundStyle(Colors.whiteColor)
-
-         Text(subText)
-            .font(Fonts.countRegularFont)
-            .foregroundStyle(Colors.lighterGrayWhite)
       }
    }
 }
@@ -167,7 +139,7 @@ struct ProfileImageFrame: View {
    var body: some View {
       ZStack {
          Circle()
-            .fill(.black.opacity(0.4))
+            .fill(Color.black.opacity(0.4))
             .frame(width: 42, height: 42)
 
          Image(image)
@@ -178,20 +150,19 @@ struct ProfileImageFrame: View {
    }
 }
 
-struct ProfileFollowFrame: View {
+struct FollowFrame: View {
    var countText: String
    var text: String
 
    var body: some View {
-      HStack(alignment: .center, spacing: 8) {
+      VStack(alignment: .leading, spacing: 2) {
          Text(countText)
-            .font(Fonts.hashMediumFont)
+            .font(Fonts.countMediumFont)
             .foregroundStyle(Colors.whiteColor)
 
          Text(text)
-            .font(Fonts.hashRegularFont)
+            .font(Fonts.countRegularFont)
             .foregroundStyle(Colors.lighterGrayWhite)
-
       }
    }
 }
@@ -200,21 +171,10 @@ struct BottomTextFrame: View {
    var text: String
 
    var body: some View {
-         Text(text)
-            .font(Fonts.countRegularFont)
-            .foregroundStyle(Colors.lighterGrayWhite)
-            .padding(.leading, -4)
-   }
-}
-
-
-struct LocationTextFrame: View {
-   var text: String
-
-   var body: some View {
       Text(text)
-         .font(Fonts.hashMediumFont)
+         .font(Fonts.countRegularFont)
          .foregroundStyle(Colors.lighterGrayWhite)
+         .padding(.leading, -4)
    }
 }
 

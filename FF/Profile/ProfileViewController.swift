@@ -112,7 +112,7 @@ struct ProfileView: View {
             }) {
                VStack {
                   Text(tab.rawValue)
-                     .font(selectedTab == tab ? Fonts.hashSemiboldFont : Fonts.basicRegularFont)
+                     .font(selectedTab == tab ? Fonts.basicSemiboldFont : Fonts.basicRegularFont)
                      .foregroundStyle(selectedTab == tab ? (scheme == .dark ? Colors.whiteColor : .white) : Colors.lighterGrayWhite)
                      .padding(.horizontal, 4)
                      .padding(.bottom, 12)
@@ -123,9 +123,9 @@ struct ProfileView: View {
                               .fill(Colors.pinkColor)
                               .frame(height: 3)
                         } else {
-                           RoundedRectangle(cornerRadius: 1)
-                              .fill(Colors.lighterGrayWhite.opacity(0.2))
-                              .frame(height: 2)
+                           //                           RoundedRectangle(cornerRadius: 1)
+                           //                              .fill(Colors.lighterGrayWhite.opacity(0.2))
+                           //                              .frame(height: 2)
                         }
                      }
                      .frame(maxWidth: .greatestFiniteMagnitude)
@@ -137,97 +137,97 @@ struct ProfileView: View {
 
    @ViewBuilder
    func ProfileHeaderView() -> some View {
-      ZStack {
-         Rectangle()
-            .fill(Colors.lighterGrayWhite.opacity(0.1))
-            .ignoresSafeArea()
-            .offset(y: -144)
-         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .bottom) {
-               TitleProfileImageFrame(image: "profile")
-
-               Spacer()
-
-               Button {
-                  // FOLLOW,FOLLOWWING, EDIT PROFILE
-               } label: {
-                  Text("Edit Profile")
-                     .font(Fonts.countMediumFont)
-                     .foregroundStyle(Colors.whiteColor)
-                     .padding(.horizontal, 16)
-                     .padding(.vertical, 8)
-                     .background() {
-                        Capsule()
-                           .fill(Colors.lighterGrayWhite.opacity(0.1))
-                     }
-               }
-               .padding(.bottom, 12)
-            }
-
+      VStack(alignment: .leading, spacing: 12) {
+         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 2) {
-               Text("Steve Aoki")
-                  .font(Fonts.titleSemiboldFont)
-                  .foregroundStyle(Colors.whiteColor)
+               HStack(alignment: .center, spacing: 8) {
+                  Text("Michelle Ogilvy")
+                     .font(Fonts.titleSemiboldFont)
+                     .foregroundStyle(Colors.whiteColor)
 
-               LocationTextFrame(text: "Los Angeles, United States")
+                  Text("·")
+                     .font(Fonts.titleSemiboldFont)
+                     .foregroundStyle(Colors.lighterGrayWhite)
+
+                  Text("@random")
+                     .font(Fonts.basicRegularFont)
+                     .foregroundStyle(Colors.lighterGrayWhite)
+               }
+
+               Text("Kyiv, Kyiv City, Ukraine")
+                  .font(Fonts.basicMediumFont)
+                  .foregroundStyle(Colors.lighterGrayWhite)
+            }
+            
+            Spacer()
+
+            ZStack {
+               Circle()
+                  .fill(Color.black.opacity(0.4))
+                  .frame(width: 60, height: 60)
+
+               Image("profile")
+                  .resizable()
+                  .frame(width: 40, height: 40)
+                  .foregroundStyle(Colors.whiteColor)
             }
 
-            HStack(spacing: 12) {
+
+         }
+
+         Text("iOS developer \nSoftware developer/Programmer/Software engineer \nSome text here")
+            .multilineTextAlignment(.leading)
+            .font(Fonts.hashRegularFont)
+            .foregroundStyle(Colors.socialWhiteColor)
+
+         HStack {
+            HStack(spacing: 32) {
                Button {
                   // FOLLOWING BUTTON
                } label: {
-                  ProfileFollowFrame(countText: "11,231",
-                                     text: "Followers")
+                  FollowFrame(countText: "123.4K",
+                              text: "Followers")
                }
 
                Button {
                   // FOLLOWERS BUTTON
                } label: {
-                  ProfileFollowFrame(countText: "22,213",
-                                     text: "Following")
+                  FollowFrame(countText: "567,8K",
+                              text: "Following")
                }
             }
+
+            Spacer()
+
+            Button {
+               // FOLLOW,FOLLOWWING, EDIT PROFILE
+            } label: {
+               Text("Edit Profile")
+                  .font(Fonts.countMediumFont)
+                  .foregroundStyle(Colors.whiteColor)
+                  .padding(.horizontal, 16)
+                  .padding(.vertical, 8)
+                  .background() {
+                     Capsule()
+                        .fill(Colors.pinkColor)
+                  }
+            }
          }
-         .padding(.horizontal)
-         .padding(.top, 8)
       }
+      .padding(.horizontal)
+      .padding(.top, 8)
    }
+
 }
 
-struct TitleProfileImageFrame: View {
-   var image: String
-
-   var body: some View {
-      ZStack {
-         Circle()
-            .fill(Colors.pinkColor)
-            .frame(width: 88, height: 88)
-            .overlay(
-               Circle()
-                  .stroke(Colors.darkBlackColor, lineWidth: 4))
-
-         Image(image)
-            .resizable()
-            .frame(width: 60, height: 60)
-            .foregroundStyle(Colors.whiteColor)
-      }
-   }
-}
 
 #Preview {
    ProfileView()
 }
 
 
-//                     Text("@ffdossa")
-//                        .font(Fonts.hashMediumFont)
-//                        .foregroundStyle(Colors.lighterGrayWhite)
 
-//                  PrimaryText(text: "Some more text here.")
 
-//                  PostButtonTextImageFrame(image: "work",
-//                                           text: "iOS Developer/iOS Developer/iOS Developer")
-//
 //                  Link(destination: URL(string: "https://github.com/ffdossa")!) {
 //                     PostButtonTextImageFrame(image: "link",
 //                                              text: "https://github.com/ffdossa")
